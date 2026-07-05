@@ -1,0 +1,32 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.WelcomeMessageContainer {
+    height: 200px;
+    width: 200px;
+    background-color: lightskyblue;
+    position: relative;
+    top: 75px;
+    left: 45%;
+}
+
+.WelcomeMessage {
+    font-size: 1.8em;
+    background-color:red;
+    position: relative;
+    left: 45px;
+    
+}
+
+.WebsiteName {
+    font-size: 3.0em;
+    background-color:green;
+}
