@@ -1,8 +1,8 @@
-function Button({ buttonName, onClick }: {buttonName:string, onClick: () => void}) {
+function Button({ buttonName="NotAssigned", onClick, className}: {buttonName?:string, onClick?: () => void, className?:string}) {
     return(
         <>
             <div>
-                <button onClick={onClick}>
+                <button onClick={onClick} className={className}>
                     {buttonName}
                 </button>
             </div>

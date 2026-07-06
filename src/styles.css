@@ -30,3 +30,17 @@
     font-size: 3.0em;
     background-color:green;
 }
+
+.WPLinkContainer {
+    position: relative;
+}
+
+.GetStartedLink {
+    margin: 20px;
+    position: relative;
+}
+
+.SigninLink {
+    margin: 20px;
+    position: relative;
+}
