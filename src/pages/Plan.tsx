@@ -8,6 +8,13 @@ function Plan() {
     // const [address, setAddress] = useState<string>("");
     // const [city, setCity] = useState<string>("");
     // const [country, setCountry] = useState<string>("");
+
+    function handleClick(e:any) {
+        e.preventDefault();
+        console.log(address.current);
+        console.log(city.current);
+        console.log(country.current);
+    }
     return(
         <>
             <form>
@@ -34,6 +41,8 @@ function Plan() {
                     onChange={(e) => country.current = e.target.value}
                     placeholder ="Country"
                 />
+
+                <input type="submit" value="Submit" onClick={handleClick}/>
             </form>
         </>
     )

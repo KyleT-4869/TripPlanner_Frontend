@@ -9,38 +9,68 @@
     padding: 0;
 }
 
+.parent {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
 .WelcomeMessageContainer {
     height: 200px;
     width: 200px;
     background-color: lightskyblue;
     position: relative;
-    top: 75px;
-    left: 45%;
+    /* top: 75px;
+    left: 45%; */
+    margin: 30px
 }
 
 .WelcomeMessage {
     font-size: 1.8em;
-    background-color:red;
     position: relative;
-    left: 45px;
+    /* left: 45px; */
     
 }
 
 .WebsiteName {
     font-size: 3.0em;
-    background-color:green;
 }
 
 .WPLinkContainer {
     position: relative;
+    margin: 20px;
+    /* top: 150px;
+    left: 250px; */
 }
 
 .GetStartedLink {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    box-sizing: border-box;
+    width: 110px;
+    height: 40px;
     margin: 20px;
+    border-radius: 100px;
+    background-color: rgb(66, 128, 253);
+    border: 5px inset #000000;
     position: relative;
 }
 
 .SigninLink {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    box-sizing: border-box;
+    width: 110px;
+    height: 40px;
     margin: 20px;
+    border-radius: 100px;
+    background-color: rgb(66, 128, 253);
+    border: 5px inset #000000;
     position: relative;
 }
