@@ -14,6 +14,7 @@ function Welcome() {
                 <div className="WPLinkContainer">
                     <Link to="/plan" className="GetStartedLink">Get Started</Link>
                     <Link to="/sigin" className="SigninLink">Signin</Link>
+                    <Link to="/map" className="MapLink">Map</Link>
                 </div>
             </div>
             
