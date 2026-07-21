@@ -5,7 +5,7 @@ import Button from'../components/Button.tsx'
 function Welcome() {
     return(
         <>
-            <div className="parent">
+            <div className="WelcomePage">
                 <div className="WelcomeMessageContainer">
                     <h2 className="WelcomeMessage">Welcome to</h2>
                     <h1 className="WebsiteName">TripPlanner</h1>
