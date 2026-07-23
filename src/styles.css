@@ -22,15 +22,12 @@
     width: 200px;
     background-color: lightskyblue;
     position: relative;
-    /* top: 75px;
-    left: 45%; */
     margin: 30px
 }
 
 .WelcomeMessage {
     font-size: 1.8em;
     position: relative;
-    /* left: 45px; */
     
 }
 
@@ -90,4 +87,6 @@
     position: relative;
 }
 
-#map { height: 180px; }
+.LocationInput {
+    display: flex
+}

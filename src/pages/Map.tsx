@@ -1,9 +1,9 @@
 import '../styles.css'
-import { useEffect } from 'react'
+import { useEffect, type ReactNode } from 'react'
 import L from "leaflet"
 import "leaflet/dist/leaflet.css"
 
-function Map() {
+function Map(props:ReactNode) {
     useEffect(() => {
         const map = L.map("map");
         map.setView([36.7783, -119.4179], 13);
