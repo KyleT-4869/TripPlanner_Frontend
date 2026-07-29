@@ -87,6 +87,10 @@
     position: relative;
 }
 
-.LocationInput {
+.LocationForm {
     display: flex
+}
+
+.PlanPage {
+    display:flex
 }

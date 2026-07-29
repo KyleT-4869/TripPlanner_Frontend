@@ -1,11 +1,12 @@
 import { useRef } from 'react'
 import  "../styles.css"
+import type { RouteData } from '../types/RouteData';
 
-interface inputFormProps {
-    handleSubmit: (e:any) => void;
+type LocationInputProps = {
+    setRoute: (route: RouteData | null) => void;
 }
 
-function LocationInput() {
+function LocationInput({setRoute} : LocationInputProps) {
     const originAddress = useRef<string>("");
     const originCity = useRef<string>("");
     const originState = useRef<string>("");
@@ -28,7 +29,9 @@ function LocationInput() {
                 throw new Error(`Response status: ${response.status}`);
             }
             else {
-                const result = await response.json;
+                const result = await response.json();
+                const route: RouteData = result;
+                setRoute(route);
                 console.log(result);
             }
         } catch(err:any) {
@@ -38,7 +41,7 @@ function LocationInput() {
 
     return(
         <div className="LocationInput">
-            <form>
+            <form className="LocationForm" onSubmit={handleSubmit}>
                 <div className="Origin">
                     <div className="OriginAddress">
                         <label htmlFor="originAddress">Starting Address</label>
@@ -46,7 +49,8 @@ function LocationInput() {
                             id="originAddress"
                             type="text"
                             required
-                            className="originAddressInput"/>
+                            className="originAddressInput"
+                            onChange={(e) => originAddress.current = e.target.value}/>
                     </div>
 
                     <div className="OriginCity">
@@ -55,7 +59,8 @@ function LocationInput() {
                             id="originCity"
                             type="text"
                             required
-                            className="originCityInput"/>
+                            className="originCityInput"
+                            onChange={(e) => originCity.current = e.target.value}/>
                     </div>
 
                     <div className="OriginState">
@@ -64,7 +69,8 @@ function LocationInput() {
                             id="originState"
                             type="text"
                             required
-                            className="originStateInput"/>
+                            className="originStateInput"
+                            onChange={(e) => originState.current = e.target.value}/>
                     </div>
                 </div>
 
@@ -76,7 +82,7 @@ function LocationInput() {
                             type="text"
                             required
                             className="destinationAddressInput"
-                        />
+                            onChange={(e) => destinationAddress.current = e.target.value}/>
                     </div>
 
                     <div className="DestinationCity">
@@ -86,7 +92,7 @@ function LocationInput() {
                             type="text"
                             required
                             className="destinationCityInput"
-                        />
+                            onChange={(e) => destinationCity.current = e.target.value}/>
                     </div>
 
                     <div className="DestinationState">
@@ -96,10 +102,10 @@ function LocationInput() {
                             type="text"
                             required
                             className="destinationStateInput"
-                        />
+                            onChange={(e) => destinationState.current = e.target.value}/>
                     </div>
                 </div>
-                <input type="submit" value="Submit" onClick={handleSubmit}/>
+                <input type="submit" value="Submit"/>
             </form>
         </div>
     )
