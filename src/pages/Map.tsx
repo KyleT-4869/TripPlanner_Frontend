@@ -1,4 +1,3 @@
-import '../styles.css'
 import { useEffect, useState } from 'react'
 import type { RouteData } from '../types/RouteData'
 import L from "leaflet"
@@ -46,7 +45,7 @@ function Map( { route } : MapProps) {
         <>
             <div id="map"
             style={{
-                height: "500px",
+                height: "100%",
                 width: "100%"
                 }}>
             </div>

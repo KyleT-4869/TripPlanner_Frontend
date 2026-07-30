@@ -14,7 +14,6 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path="/" element={<Welcome/>} />
         <Route path="/plan" element={<Plan/>} />
-        <Route path="/map" element={<Map/>}/>
         <Route path="*" element = {<NotFound/>} />
       </Routes>
     </BrowserRouter>

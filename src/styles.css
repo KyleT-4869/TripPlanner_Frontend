@@ -86,11 +86,3 @@
     border: 5px inset #000000;
     position: relative;
 }
-
-.LocationForm {
-    display: flex
-}
-
-.PlanPage {
-    display:flex
-}
