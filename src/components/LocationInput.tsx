@@ -1,12 +1,14 @@
 import { useRef } from 'react'
 import  "../styles.css"
-import type { RouteData } from '../types/RouteData';
 
 type LocationInputProps = {
-    setRoute: (route: RouteData | null) => void;
+    functionToCall: (
+        startLocationString: string | null, 
+        endLocationString: string | null,
+    ) => Promise<void>;
 }
 
-function LocationInput({setRoute} : LocationInputProps) {
+function LocationInput({functionToCall} : LocationInputProps) {
     const originAddress = useRef<string>("");
     const originCity = useRef<string>("");
     const originState = useRef<string>("");
@@ -14,29 +16,14 @@ function LocationInput({setRoute} : LocationInputProps) {
     const destinationCity = useRef<string>("");
     const destinationState = useRef<string>("");
 
-    const API_URL:string = import.meta.env.VITE_API_URL;
 
-    async function handleSubmit(e:any) {
+    async function handleSubmit(e:React.SubmitEvent<HTMLElement>) {
         e.preventDefault();
+
         const startAddress:string = `${originAddress.current},${originCity.current},${originState.current}`;
         const destination:string = `${destinationAddress.current},${destinationCity.current},${destinationState.current}`;
-        const url = `${API_URL}/callNominatim/start/${startAddress}/dest/${destination}`;
-        
-        try {
-            const response = await fetch(url);
 
-            if(!response.ok) {
-                throw new Error(`Response status: ${response.status}`);
-            }
-            else {
-                const result = await response.json();
-                const route: RouteData = result;
-                setRoute(route);
-                console.log(result);
-            }
-        } catch(err:any) {
-            console.log(err);
-        }
+        await functionToCall(startAddress, destination);
     }
 
     return(

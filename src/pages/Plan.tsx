@@ -6,7 +6,28 @@ import '../styles/Plan.css';
 
 function Plan() {
     const [route, setRoute] = useState<RouteData | null>(null);
+    const API_URL:string = import.meta.env.VITE_API_URL;
     
+    async function functionToPass(startLocationString: string | null, endLocationString: string | null) {
+        const url:string = `${API_URL}/route/getRoute?origin=${startLocationString}&dest=${endLocationString}`;
+
+        try {
+            const response = await fetch(url);
+
+            if(!response.ok) {
+                throw new Error(`Response status: ${response.status}`);
+            }
+            else {
+                const result = await response.json();
+                const route: RouteData = result;
+                setRoute(route);
+                console.log(result);
+            }
+        } catch(err:any) {
+            console.log(err);
+        }
+    }
+
     return(
         <>
             <div className="PlanPage">
@@ -14,7 +35,7 @@ function Plan() {
                     <Map route={route} />
                 </div>
                 <div className="LocationInputContainer">
-                    <LocationInput setRoute={setRoute}/>
+                    <LocationInput functionToCall={functionToPass}/>
                 </div>
             </div>
         </>
