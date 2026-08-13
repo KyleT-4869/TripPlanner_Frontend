@@ -32,6 +32,8 @@ function Map( { route } : MapProps) {
                 );
 
             const polyline = L.polyline(positions, {color: 'red'}).addTo(map);
+            const startMarker = L.marker(positions[0]).addTo(map);
+            const endMarker = L.marker(positions[positions.length - 1]).addTo(map);
 
             map.fitBounds(polyline.getBounds());
 
