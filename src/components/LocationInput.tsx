@@ -8,90 +8,121 @@ type LocationInputProps = {
     ) => Promise<void>;
 }
 
-function LocationInput({functionToCall} : LocationInputProps) {
-    const originAddress = useRef<string>("");
-    const originCity = useRef<string>("");
-    const originState = useRef<string>("");
-    const destinationAddress = useRef<string>("");
-    const destinationCity = useRef<string>("");
-    const destinationState = useRef<string>("");
+function LocationInput({ functionToCall } : LocationInputProps) {
+    const startLocation = useRef<string>("");
+    const endLocation = useRef<string>("");
+    const transportMethod = useRef<string>("car");
+    
 
 
     async function handleSubmit(e:React.SubmitEvent<HTMLElement>) {
         e.preventDefault();
 
-        const startAddress:string = `${originAddress.current},${originCity.current},${originState.current}`;
-        const destination:string = `${destinationAddress.current},${destinationCity.current},${destinationState.current}`;
+        // // const startAddress:string = `${originAddress.current},${originCity.current},${originState.current}`;
+        // // const destination:string = `${destinationAddress.current},${destinationCity.current},${destinationState.current}`;
 
-        await functionToCall(startAddress, destination);
+        // await functionToCall(startAddress, destination);
     }
 
     return(
         <div className="LocationInput">
             <form className="LocationForm" onSubmit={handleSubmit}>
-                <div className="Origin">
-                    <div className="OriginAddress">
-                        <label htmlFor="originAddress">Starting Address</label>
-                        <input
-                            id="originAddress"
-                            type="text"
-                            required
-                            className="originAddressInput"
-                            onChange={(e) => originAddress.current = e.target.value}/>
+                <div className="StartEndInput">
+                    <div className="startLocationDiv">
+                        <label htmlFor="startLocation">Start Location:</label>
+                        <input 
+                            id="startLocation" 
+                            type="text" 
+                            required 
+                            className="startLocationInput"
+                            onChange={(e) => {startLocation.current = e.target.value}}
+                        />
                     </div>
-
-                    <div className="OriginCity">
-                        <label htmlFor="originCity">Starting City</label>
+                    <div className="EndLocationDiv">
+                        <label htmlFor='endLocation'>End Location:</label>
                         <input
-                            id="originCity"
+                            id="endLocation"
                             type="text"
                             required
-                            className="originCityInput"
-                            onChange={(e) => originCity.current = e.target.value}/>
-                    </div>
-
-                    <div className="OriginState">
-                        <label htmlFor="originState">Starting State</label>
-                        <input
-                            id="originState"
-                            type="text"
-                            required
-                            className="originStateInput"
-                            onChange={(e) => originState.current = e.target.value}/>
+                            className="endLocationInput"
+                            onChange={(e) => {endLocation.current = e.target.value}}
+                        />
                     </div>
                 </div>
+                
+                <div className="TransportationChoice">
+                    <fieldset>
+                        <legend>Transportation method: </legend>
+                        <div>
+                            <input
+                                type="radio"
+                                id="car"
+                                name="transportChoice"
+                                value="car"
+                                defaultChecked
+                                onChange={(e) => {transportMethod.current = e.target.value}}
+                            />
+                            <label htmlFor="car">Car</label>
 
-                <div className="Destination">
-                    <div className="DestinationAddress">
-                        <label htmlFor='destinationAddress'>Destination Address</label>
-                        <input
-                            id="destinationAddress"
-                            type="text"
-                            required
-                            className="destinationAddressInput"
-                            onChange={(e) => destinationAddress.current = e.target.value}/>
-                    </div>
+                            <input
+                                type="radio"
+                                id="walking"
+                                name="transportChoice"
+                                value="walking"
+                                onChange={(e) => {transportMethod.current = e.target.value}}
+                            />
+                            <label htmlFor="walking">Walking</label>
 
-                    <div className="DestinationCity">
-                        <label htmlFor="destinationCity">Destination City</label>
-                        <input
-                            id="destinationCity"
-                            type="text"
-                            required
-                            className="destinationCityInput"
-                            onChange={(e) => destinationCity.current = e.target.value}/>
-                    </div>
+                            <input
+                                type="radio"
+                                id="bicyle"
+                                name="transportChoice"
+                                value="bicycle"
+                                onChange={(e) => {transportMethod.current = e.target.value}}
+                            />
+                            <label htmlFor="bicycle">Bicycle</label>
 
-                    <div className="DestinationState">
-                        <label htmlFor="destinationState">Destination State</label>
-                        <input
-                            id="destinationState"
-                            type="text"
-                            required
-                            className="destinationStateInput"
-                            onChange={(e) => destinationState.current = e.target.value}/>
-                    </div>
+                            <input
+                                type="radio"
+                                id="plane"
+                                name="transportChoice"
+                                value="plane"
+                                onChange={(e) => {transportMethod.current = e.target.value}}
+                            />
+                            <label htmlFor="plane">Plane</label>
+
+                        </div>
+                    </fieldset>
                 </div>
+
+                <div className="AmenitiesSelect">
+                    <fieldset>
+                        <legend>Show me: </legend>
+                        <div>
+                            <label>
+                                Restaurant
+                                <input
+                                    type="checkbox"
+                                    name="amenities"
+                                    id="restaurant"
+                                    value="restaurant"
+                                />
+                            </label>
+
+                            <label>
+                                Gas station
+                                <input
+                                    type="checkbox"
+                                    name="amenities"
+                                    id="gasStation"
+                                    value="gasStation"
+                                />
+                            </label>
+
+                        </div>
+                    </fieldset>
+                </div>
+                
                 <input type="submit" value="Submit"/>
             </form>
         </div>
