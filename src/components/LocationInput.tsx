@@ -17,7 +17,8 @@ function LocationInput({ functionToCall } : LocationInputProps) {
 
     async function handleSubmit(e:React.SubmitEvent<HTMLElement>) {
         e.preventDefault();
-
+        
+        await functionToCall(startLocation.current, endLocation.current);
         // // const startAddress:string = `${originAddress.current},${originCity.current},${originState.current}`;
         // // const destination:string = `${destinationAddress.current},${destinationCity.current},${destinationState.current}`;
 
@@ -54,6 +55,7 @@ function LocationInput({ functionToCall } : LocationInputProps) {
                     <fieldset>
                         <legend>Transportation method: </legend>
                         <div>
+                            <label htmlFor="car">Car</label>
                             <input
                                 type="radio"
                                 id="car"
@@ -62,8 +64,8 @@ function LocationInput({ functionToCall } : LocationInputProps) {
                                 defaultChecked
                                 onChange={(e) => {transportMethod.current = e.target.value}}
                             />
-                            <label htmlFor="car">Car</label>
-
+                            
+                            <label htmlFor="walking">Walking</label>
                             <input
                                 type="radio"
                                 id="walking"
@@ -71,17 +73,17 @@ function LocationInput({ functionToCall } : LocationInputProps) {
                                 value="walking"
                                 onChange={(e) => {transportMethod.current = e.target.value}}
                             />
-                            <label htmlFor="walking">Walking</label>
-
+                            
+                            <label htmlFor="bicycle">Bicycle</label>
                             <input
                                 type="radio"
-                                id="bicyle"
+                                id="bicycle"
                                 name="transportChoice"
                                 value="bicycle"
                                 onChange={(e) => {transportMethod.current = e.target.value}}
                             />
-                            <label htmlFor="bicycle">Bicycle</label>
 
+                            <label htmlFor="plane">Plane</label>
                             <input
                                 type="radio"
                                 id="plane"
@@ -89,8 +91,7 @@ function LocationInput({ functionToCall } : LocationInputProps) {
                                 value="plane"
                                 onChange={(e) => {transportMethod.current = e.target.value}}
                             />
-                            <label htmlFor="plane">Plane</label>
-
+                        
                         </div>
                     </fieldset>
                 </div>
